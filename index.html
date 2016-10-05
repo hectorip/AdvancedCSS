@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <h1> CSS Avanzado </h1>
-    <a href="#"> Esto es un link</a>
+    <h1> Vue test flight </h1>
+<!--     <a href="#"> Esto es un link</a>
     <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi quam magnam, dolores ut eveniet cupiditate sint nam sequi deleniti, possimus explicabo maiores voluptatem necessitatibus nihil, ea aut placeat ratione magni!</p>
 
     <p>Esto es un parrafo contiguo</p>
@@ -25,8 +25,43 @@
         <p>segundo</p>
         <p>TERCER</p>
         <p>CUARTO</p>
+    </div> -->
+    
+    <div id="vue_app">
+        <h1> Saludando a {{name}}</h1>
+        Saludo devuelto por el server: {{ response_data }}
+        <br>
+        <input type="text" v-model="name">
+        <button v-on:click="fetch_data"> SALUDAR </button>
+        <pre>
+            {{ $data | json }}
+        </pre>
+
     </div>
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.28/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>
+    <script>
+        v = new Vue({
+            el: "#vue_app",
+            data: {
+                message: "Hola Vue",
+                name: "Alguien",
+                response_data: ""
+            },
+            methods: {
+                fetch_data: function(){
+                    this.$http.get('https://evening-basin-93113.herokuapp.com/contact?name='+this.name).then((response) => {
+                    this.response_data = response.body.saludo;
+                  });
+                }
+            },
+            ready: function(){
+                return true;
+            }
+        });
+    </script>
 </body>
 </html>
+
+
