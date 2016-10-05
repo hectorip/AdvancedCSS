@@ -1,0 +1,48 @@
+*{
+    font-family: sans-serif;
+}
+p{
+    color: red;
+}
+.verde{
+    color: green;
+}
+#azul{
+    color: azul;
+}
+
+a:visited{
+    color: gray;
+}
+
+a:hover{
+    color: magenta;
+}
+
+/* Selectores compuestos */
+
+.seccion_principal p{ /* selector de descendiente */
+    color: black;
+}
+
+.seccion_principal > p{
+    color: green;
+}
+
+p + p {
+    background: yellow;
+}
+
+.seccion_secundaria p:last-child{
+    color: white;
+    background: black;
+}
+
+p:nth-child(3){
+    color: blue;
+    background: red;
+}
+
+
+
+
